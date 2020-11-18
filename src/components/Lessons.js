@@ -5,15 +5,15 @@ import Speech from "speak-tts";
 export const Lessons = ({ match }) => {
   const { data } = useContext(MainContext);
   const speech = new Speech();
+  speech.init({
+    volume: 1,
+    lang: "de-DE",
+    rate: 0.7,
+    pitch: 1,
+    splitSentences: true,
+  });
 
   const voiceHandler = (e) => {
-    speech.init({
-      volume: 1,
-      lang: "de-DE",
-      rate: 0.7,
-      pitch: 1,
-      splitSentences: true,
-    });
     speech.speak({
       text: e.target.innerHTML,
     });
