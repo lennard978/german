@@ -1,0 +1,24 @@
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { MainContext } from "./MainProvider";
+
+export const CardsMain = () => {
+  const { btnValue } = useContext(MainContext);
+  const [btn] = btnValue;
+  return (
+    <div className="container">
+      <div className="row justify-content-center vh-100 align-content-center">
+        {btn.map((index) => (
+          <div key={index.id} className="col-12 col-sm-6">
+            <Link
+              to={`/cardsMain/${index.id}`}
+              className={`btn ${index.back} btn-block my-2 p-4 font-weight-bolder text-monospace text-capitalize`}
+            >
+              {index.name}
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
