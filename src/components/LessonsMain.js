@@ -7,12 +7,12 @@ export const LessonsMain = () => {
 
   return (
     <div className="container">
-      <div className="row justify-content-center vh-100 align-content-center">
+      <div className="row justify-content-center">
         {btn.map((index) => (
           <div key={index.id} className="col-12 col-sm-6">
             <Link
               to={`/lessonsMain/${index.id}`}
-              className={`btn ${index.back} btn-block my-2 p-4 font-weight-bolder text-monospace text-capitalize`}
+              className={`btn ${index.back} btn-block my-2 p-3 font-weight-bolder text-monospace text-capitalize`}
             >
               {index.name}
             </Link>

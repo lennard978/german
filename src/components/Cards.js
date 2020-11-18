@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MainContext } from "./MainProvider";
 import "./cards.css";
@@ -6,16 +6,11 @@ import "./cards.css";
 export const Cards = ({ match }) => {
   const { data } = useContext(MainContext);
 
-  useEffect(() => {}, []);
-
   const [addOne, setAddOne] = useState(0);
   const germanCard = data[`${match.params.id}`][addOne].german;
   const englishCard = data[`${match.params.id}`][addOne].english;
 
   const [block, setBlock] = useState("enabled");
-
-  console.log(data[`${match.params.id}`].length);
-  console.log(addOne);
 
   const addOneHandler = (e) => {
     e.preventDefault();
@@ -29,7 +24,7 @@ export const Cards = ({ match }) => {
     <div className="container">
       <div className="row mb-2 justify-content-center">
         <div className="col-12">
-          <h1 className="text-center text-monospace font-weight-bold my-4">
+          <h1 className="text-center text-monospace font-weight-bold my-2">
             Cards {Number(match.params.id) + 1}
           </h1>
         </div>

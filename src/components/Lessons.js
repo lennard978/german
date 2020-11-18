@@ -1,10 +1,23 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MainContext } from "./MainProvider";
-
+import Speech from "speak-tts";
 export const Lessons = ({ match }) => {
   const { data } = useContext(MainContext);
+  const speech = new Speech();
 
+  const voiceHandler = (e) => {
+    speech.init({
+      volume: 1,
+      lang: "de-DE",
+      rate: 0.7,
+      pitch: 1,
+      splitSentences: true,
+    });
+    speech.speak({
+      text: e.target.innerHTML,
+    });
+  };
   return (
     <div className="container">
       <div className="row mb-2 justify-content-center">
@@ -17,7 +30,10 @@ export const Lessons = ({ match }) => {
           <div key={index.id} className="col-12">
             <div className="row">
               <div className="col-12 bg-info my-1 p-2 pl-4">
-                <p className="m-0 pt-2 text-capitalize font-weight-bolder font-italic">
+                <p
+                  onClick={voiceHandler}
+                  className="m-0 pt-2 text-capitalize font-weight-bolder font-italic"
+                >
                   {index.german}
                 </p>
                 <p className="m-0 pb-2 text-capitalize text-monospace">
